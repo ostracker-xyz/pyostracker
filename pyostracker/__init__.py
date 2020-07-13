@@ -5,6 +5,7 @@ import logging
 import calendar
 import datetime
 import urllib.parse
+import urllib.error
 import urllib.request
 
 
@@ -48,8 +49,14 @@ def _update(account):
             "User-Agent": "Mozilla/5.0",
         },
     )
-    with urllib.request.urlopen(req, timeout=300) as resp:
-        return json.load(resp)
+    try:
+        with urllib.request.urlopen(req, timeout=300) as resp:
+            return json.load(resp)
+    except urllib.error.HTTPError as err:
+        if err.code != 409:
+            raise
+        # Conflicts with a pending update -> use that as a handle
+        return json.load(err)
 
 
 def update(account):
