@@ -2,8 +2,11 @@ import pyostracker
 
 
 def test_update():
-    scores = pyostracker.update("zezima")
-    assert scores["hiscores"], "update() did not find hiscores"
+    before = pyostracker.scores("zezima")
+    pyostracker.update("zezima")
+    after = pyostracker.scores("zezima")
+
+    assert before["current_at"] < after["current_at"], "update() did not find hiscores"
 
 
 def test_scores():

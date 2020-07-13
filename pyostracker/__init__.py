@@ -25,7 +25,7 @@ def _poll_update(account, handle):
             "User-Agent": "Mozilla/5.0",
         },
     )
-    expires = datetime.datetime.fromisoformat(handle["expires_at_iso8601"])
+    expires = datetime.datetime.utcfromtimestamp(handle["expires_at"])
 
     while datetime.datetime.utcnow() < expires:
         try:
