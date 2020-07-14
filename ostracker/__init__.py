@@ -9,7 +9,7 @@ import urllib.error
 import urllib.request
 
 
-LOGGER = logging.getLogger("pyostracker")
+LOGGER = logging.getLogger("ostracker")
 TRACKER_URL = os.environ.get("TRACKER_URL", "https://ostracker.xyz")
 
 

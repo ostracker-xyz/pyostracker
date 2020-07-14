@@ -1,14 +1,14 @@
-import pyostracker
+import ostracker
 
 
 def test_update():
-    before = pyostracker.scores("zezima")
-    pyostracker.update("zezima")
-    after = pyostracker.scores("zezima")
+    before = ostracker.scores("zezima")
+    ostracker.update("zezima")
+    after = ostracker.scores("zezima")
 
     assert before["current_at"] < after["current_at"], "update() did not find hiscores"
 
 
 def test_scores():
-    scores = pyostracker.scores("zezima")
+    scores = ostracker.scores("zezima")
     assert scores["hiscores"], "scores() did not find hiscores"
