@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="ostracker",
-    version="0.0.4",
+    version="0.0.5",
     author="ostracker.xyz",
     author_email="admin@ostracker.xyz",
     description="Python client library for ostracker.xyz",
