@@ -19,7 +19,7 @@ def _poll_update(account, handle):
         "start": handle["created_at"],
     })
     req = urllib.request.Request(
-        f"{TRACKER_URL}/?{params}",
+        f"{TRACKER_URL}/api/v1/hiscores?{params}",
         headers={
             "Accept": "application/json",
             "User-Agent": "Mozilla/5.0",
@@ -43,7 +43,8 @@ def _update(account):
         "player": account,
     })
     req = urllib.request.Request(
-        f"{TRACKER_URL}/update?{params}",
+        f"{TRACKER_URL}/api/v1/hiscores?{params}",
+        method="PUT",
         headers={
             "Accept": "application/json",
             "User-Agent": "Mozilla/5.0",
@@ -74,7 +75,7 @@ def scores(account, dt=None):
 
     q_str = urllib.parse.urlencode(params)
     req = urllib.request.Request(
-        f"{TRACKER_URL}/?{q_str}",
+        f"{TRACKER_URL}/api/v1/hiscores?{q_str}",
         headers={
             "Accept": "application/json",
             "User-Agent": "Mozilla/5.0",
